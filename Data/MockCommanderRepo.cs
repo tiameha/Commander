@@ -20,8 +20,8 @@ namespace Commander.Data
             var Commands = new List<Command>
             {
                 new Command{ Id=0, HowTo="Boil egg", Line="Boil water", Platform="Kettle"},
-                new Command{ Id=1, HowTo="Boil egg1", Line="Boil water1", Platform="Kettle1"},
-                new Command{ Id=2, HowTo="Boil egg2", Line="Boil water2", Platform="Kettle2"}
+                new Command{ Id=1, HowTo="Make Toast", Line="Toast Bread", Platform="Toaster"},
+                new Command{ Id=2, HowTo="Make Coffee", Line="Brew java", Platform="Coffee pot"}
             };
 
             return Commands;
