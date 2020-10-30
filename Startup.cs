@@ -9,6 +9,7 @@ using Commander.Data;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
 using Newtonsoft.Json.Serialization;
+using Commander.Models;
 
 namespace Commander
 {
@@ -59,6 +60,8 @@ namespace Commander
             {
                 endpoints.MapControllers();
             });
+
+            PrepDb.PrepPopulation(app);
         }
     }
 }
