@@ -28,7 +28,17 @@ namespace Commander
 
             //services.AddScoped<ICommanderRepo, MockCommanderRepo>();
 
-            services.AddDbContext<CommanderContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("CommanderConnection")));
+            //services.AddDbContext<CommanderContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("CommanderConnSQLSvr")));
+
+            // TODO: Fix this sqlite db location
+            // Configuration.GetConnectionString("CommanderConnSQLite")
+            // connectionString = "CommanderConnSQLite": "Data source = C:\\Users\\Terrell HP5\\source\\repos\\Commander\\Database\\CommanderDb.sqlite"
+            string strExeFilePath = System.Reflection.Assembly.GetExecutingAssembly().Location;
+            string strWorkPath = System.IO.Path.GetDirectoryName(strExeFilePath);
+            string strSettingsDbFilePath = System.IO.Path.Combine(strWorkPath, "CommanderDb.sqlite");
+
+            services.AddDbContext<CommanderContext>(opt => opt.UseSqlite("Data source=" + strSettingsDbFilePath));
+
             services.AddControllers().AddNewtonsoftJson(s =>
             {
                 s.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
